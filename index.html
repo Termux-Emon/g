@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Dynamic Image Gallery</h1>
+
+    <div class="gallery" id="imageGallery"></div>
+
+    <script>
+        const imageFolder = "images/";
+        const imageList = ["image1.jpg", "image2.png", "image3.jpg", "image4.jpg"]; // এখানে নতুন ইমেজ যোগ করুন
+
+        const gallery = document.getElementById("imageGallery");
+
+        imageList.forEach(image => {
+            const imgElement = document.createElement("img");
+            imgElement.src = imageFolder + image;
+            imgElement.alt = "Gallery Image";
+            gallery.appendChild(imgElement);
+        });
+    </script>
+
+</body>
+</html>
