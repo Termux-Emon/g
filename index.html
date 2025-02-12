@@ -39,14 +39,17 @@
     <div class="gallery" id="imageGallery"></div>
 
     <script>
-        const imageFolder = "images/";
-        const imageList = ["image1.jpg", "image2.png", "image3.jpg", "image4.jpg"]; // এখানে নতুন ইমেজ যোগ করুন
+        const imageList = [
+            "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/20241204_185001.jpg",
+            "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/PXL_20250209_005916200.PORTRAIT.ORIGINAL.jpg",
+            "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/images/image3.jpg"
+        ];
 
         const gallery = document.getElementById("imageGallery");
 
         imageList.forEach(image => {
             const imgElement = document.createElement("img");
-            imgElement.src = imageFolder + image;
+            imgElement.src = image;
             imgElement.alt = "Gallery Image";
             gallery.appendChild(imgElement);
         });
