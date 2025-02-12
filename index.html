@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emon Image Gallery</title>
     <style>
+        /* লাইট ও ডার্ক মোডের জন্য বেসিক স্টাইল */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #f4f4f4;
+            color: #000;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             margin-top: 20px;
@@ -27,7 +30,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
         .image-container:hover {
             transform: scale(1.05);
@@ -41,15 +44,57 @@
             font-size: 14px;
             color: gray;
         }
+
+        /* ডার্ক মোড স্টাইল */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+        .dark-mode .image-container {
+            background: #1e1e1e;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+        .dark-mode .timestamp {
+            color: #ccc;
+        }
+
+        /* ডার্ক মোড বাটন */
+        .toggle-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            transition: background 0.3s;
+        }
+        .toggle-button:hover {
+            background-color: #555;
+        }
+        .dark-mode .toggle-button {
+            background-color: #fff;
+            color: #000;
+        }
+        .dark-mode .toggle-button:hover {
+            background-color: #ddd;
+        }
     </style>
 </head>
 <body>
 
     <h1>Emon Image Gallery</h1>
+    <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
     <div class="gallery" id="imageGallery"></div>
 
     <script>
+        // ডার্ক মোড টগল ফাংশন
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
         // ইমেজ লিস্ট (GitHub Raw URL ব্যবহার করো)
         const images = [
             { url: "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/PXL_20250209_005916200.PORTRAIT.ORIGINAL.jpg", date: "2024-02-12 10:30 AM" },
