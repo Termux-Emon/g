@@ -20,15 +20,26 @@
             gap: 15px;
             margin-top: 20px;
         }
-        .gallery img {
+        .image-container {
             width: 250px;
-            height: auto;
+            background: white;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
             transition: transform 0.3s;
         }
-        .gallery img:hover {
-            transform: scale(1.1);
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .image-container .timestamp {
+            margin-top: 8px;
+            font-size: 14px;
+            color: gray;
         }
     </style>
 </head>
@@ -39,19 +50,30 @@
     <div class="gallery" id="imageGallery"></div>
 
     <script>
-        const imageList = [
-            "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/20241204_185001.jpg",
-            "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/PXL_20250209_005916200.PORTRAIT.ORIGINAL.jpg",
-            "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/images/image3.jpg"
+        // ইমেজ লিস্ট (GitHub Raw URL ব্যবহার করো)
+        const images = [
+            { url: "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/PXL_20250209_005916200.PORTRAIT.ORIGINAL.jpg", date: "2024-02-12 10:30 AM" },
+            { url: "https://raw.githubusercontent.com/Termux-Emon/g/refs/heads/main/images/20241204_185001.jpg", date: "2024-02-12 11:15 AM" },
+            { url: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/images/image3.jpg", date: "2024-02-12 12:45 PM" }
         ];
 
         const gallery = document.getElementById("imageGallery");
 
-        imageList.forEach(image => {
+        images.forEach(image => {
+            const container = document.createElement("div");
+            container.classList.add("image-container");
+
             const imgElement = document.createElement("img");
-            imgElement.src = image;
+            imgElement.src = image.url;
             imgElement.alt = "Gallery Image";
-            gallery.appendChild(imgElement);
+
+            const timestamp = document.createElement("div");
+            timestamp.classList.add("timestamp");
+            timestamp.textContent = "Uploaded: " + image.date;
+
+            container.appendChild(imgElement);
+            container.appendChild(timestamp);
+            gallery.appendChild(container);
         });
     </script>
 
